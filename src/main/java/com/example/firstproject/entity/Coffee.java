@@ -11,28 +11,22 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Getter
-public class Article {
+public class Coffee {
 
-    /*public Long getId() { //Getter 롬복 어노테이션 사용으로 불필요
-        return id;
-    }*/
-
-    //@Id -> 해당 엔티티의 Primary key로 매핑
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // DB가 id 자동 생성
     private Long id;
 
-    // @Column -> 해당 필드가 DB 테이블의각 열에 매핑됨.
     @Column
-    private String title;
+    private String name;
     @Column
-    private String content;
+    private String price;
 
     //전달 받은 값중에 null이 있다면 해당 데이터는 DB에 저장하지 않음
-    public void patch(Article article) {
-        if(article.title != null)
-            this.title = article.title;
-        if(article.content != null)
-            this.content = article.content;
+    public void patch(Coffee coffee) {
+        if(coffee.name != null)
+            this.name = coffee.name;
+        if(coffee.price != null)
+            this.price = coffee.price;
     }
 }
